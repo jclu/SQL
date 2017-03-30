@@ -2,12 +2,28 @@
 truncate和 delete只删除数据不删除表的结构(定义)
 
 1) drop
+The SQL DROP command is used to remove an object from the database.
+If you drop a table, all the rows in the table is deleted and the table structure is removed from the database.
+When a table is dropped all the references to the table will not be valid.
+the integrity constraints will be dropped, grant or access privileges on the table will also be dropped
+
+
+Syntax to drop a sql table structure:
+  drop table tableName;
 
 2) truncate
-truncate table tableName
+The SQL TRUNCATE command is used to delete all the rows from the table and free the space containing the table.
+
+Syntax to truncate a table:
+  truncate table tableName
 
 3) delete
-delete from table tableName
+This command deletes only the rows from the table based on the condition given in the where clause 
+or deletes all the rows from the table if no condition is specified. 
+But it does not free the space containing the table.
+
+Syntax to delete a table:
+delete from table tableName [WHERE condition];
 注：不会把数据完全删除，只是标注起来
 
 
