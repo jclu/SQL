@@ -11,6 +11,38 @@ delete from table tableName
 注：不会把数据完全删除，只是标注起来
 
 
+Don't drop - it will delete the data and the definition.
+If you delete - the data is gone and auto-increment values go on from the last value.
+If you truncate - then it is like you just did create the table. No data and all counters resetted
+
+Drop&Truncate is DDL, Delete is DML.
+
+
+DELETE
+
+DELETE is a DML Command.
+DELETE statement is executed using a row lock, each row in the table is locked for deletion.
+We can specify filters in where clause
+It deletes specified data if where condition exists.
+Delete activates a trigger because the operation are logged individually.
+Slower than truncate because, it keeps logs.
+Rollback is possible.
+TRUNCATE
+
+TRUNCATE is a DDL command.
+TRUNCATE TABLE always locks the table and page but not each row.
+Cannot use Where Condition.
+It Removes all the data.
+TRUNCATE TABLE cannot activate a trigger because the operation does not log individual row deletions.
+Faster in performance wise, because it doesn't keep any logs.
+Rollback is not possible.
+
+
+TRUNCATE is not possible when table has referential keys to other tables.
+
+
+
+
 不同点: 
 1. truncate和 delete只删除数据不删除表的结构(定义) 
     drop语句将删除表的结构被依赖的约束(constrain),触发器(trigger),索引(index); 依赖于该表的存储过程/函数将保留,但是变为invalid状态. 
