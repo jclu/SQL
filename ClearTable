@@ -81,3 +81,8 @@ As such, DELETE operations can be rolled back (undone), while DROP and TRUNCATE 
 alter table MyOtherTable nocheck constraint all
 delete from MyTable
 alter table MyOtherTable check constraint all
+
+
+要删除SQL Server数据库中所有记录时，该怎么办呢?有两个选择：
+　　1.按照先后顺序逐个删除，这个方法在表非常多的情况下显得很不现实，即便是表数量不多，但约束比较多时，你还是要花费大量的时间和精力去研究其间的约束关系，然后找出先删哪个表，再删哪个表，最后又删哪个表。
+　　2.禁用所有约束，删除所有数据，最后再启用约束，这样就不用花时间和精力去研究什么约束了，只需要编写一个简单的存储过程就可以自动完成这个任务。
