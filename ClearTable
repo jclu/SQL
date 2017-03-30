@@ -1,0 +1,8 @@
+1) drop
+
+2) truncate
+
+
+3) delete
+delete from table tableName
+注：不会把数据完全删除，只是标注起来
