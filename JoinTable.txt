@@ -1,0 +1,20 @@
+# tba
+create table tba (id int primary key, x number, y number);
+insert into tba values (1, 0, 0);
+insert into tba values (2, 1, 0);
+insert into tba values (3, 2, 0);
+
+# tbb
+create table tbb (id int primary key, x number, y number, z number);
+insert into tbb values (1, 0, 0, 0);
+insert into tbb values (2, 0, 5, 1);
+insert into tbb values (3, 0, 6, 2);
+
+Select * from tba inner join tbb on tba.id = tbb.id
+Select * from tba left join tbb on tba.x = tbb.x
+
+Select * from tba natural join tbb
+Select * from tba natural left join tbb
+
+Select tba.*, tbb.z from tba inner join tbb on tba.id = tbb.id
+
