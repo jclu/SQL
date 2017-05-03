@@ -1,0 +1,28 @@
+DECLARE
+    tablename VARCHAR2(1024);
+
+    CURSOR statements IS
+        SELECT tablename FROM pg_tables
+        WHERE tableowner = 'ML';
+BEGIN
+    dbms_output.put_line('-------- Cleaning ML DB data begins ---------');
+
+    -- Clean table data
+    OPEN statements;
+
+    FETCH statements INTO tablename;
+    WHILE statements%FOUND LOOP
+        dbms_output.put_line('Tablename: ' || tablename);
+        EXECUTE 'TRUNCATE TABLE ' || tablename || ' CASCADE;';
+        FETCH statements INTO tablename;
+    END LOOP;
+
+    CLOSE statements;
+
+    -- Re-create HIBERNATE_SEQUENCE
+    dbms_output.put_line('Sequence: HIBERNATE_SEQUENCE');
+    DROP SEQUENCE HIBERNATE_SEQUENCE;
+    CREATE SEQUENCE HIBERNATE_SEQUENCE;
+
+    dbms_output.put_line('------------------- The End -------------------');
+END;
